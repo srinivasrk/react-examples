@@ -3,13 +3,13 @@ import SearchBar from './SearchBar';
 import youtubeApi from '../api/youtubeApi';
 import key from '../api/config';
 import VideoList from './VideoList';
+import VideoDescription from './VideoDescription';
 import './App.css';
 
 class App extends React.Component {
-  state = { currentResults: [] };
+  state = { currentResults: [], currentVideoSelected: null };
 
   onSearchSubmit = (term) => {
-    console.log(term);
     youtubeApi.get('/search', {
       params: {
         part: 'snippet',
@@ -30,11 +30,16 @@ class App extends React.Component {
     })
   }
 
+  onVideoSelect = (video) => {
+    this.setState({ currentVideoSelected: video })
+  }
+
   render () {
     return (
       <div className="ui container" style={{marginTop: '10px'}}>
         <SearchBar onSubmit={this.onSearchSubmit}/>
-        <div className="video-list"><VideoList videos={this.state.currentResults} /></div>
+        <VideoDescription video={this.state.currentVideoSelected} ></VideoDescription>
+        <div className="video-list"><VideoList onVideoSelect={this.onVideoSelect} videos={this.state.currentResults} /></div>
       </div>
     )
   }

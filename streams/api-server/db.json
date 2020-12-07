@@ -1,0 +1,15 @@
+{
+  "streams": [
+    {
+      "title": "Streaming Dota",
+      "description": "High MMR games",
+      "id": 1
+    },
+    {
+      "title": "Horizon zero dawn",
+      "description": "HZD All out",
+      "userId": "107491967296912960346",
+      "id": 2
+    }
+  ]
+}

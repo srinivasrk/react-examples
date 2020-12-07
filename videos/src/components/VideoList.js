@@ -4,7 +4,7 @@ import VideoCard from './VideoCard';
 class VideoList extends React.Component {
   render () {
     const images = this.props.videos.map((video) => {
-      return <VideoCard key={video.id.videoId} title={video.snippet.title} image={video.snippet.thumbnails.high.url} description={video.snippet.description} />
+      return <VideoCard onVideoSelect={this.props.onVideoSelect} key={video.id.videoId} video={video} />
     });
     return (
       <div>{images}</div>
